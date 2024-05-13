@@ -5,9 +5,7 @@
 
 void menu()
 {
-    printf("Opções:\n1 - Buscar cidade\n
-                    2 - Buscar os N vizinhos mais próximos\n
-                    3 - Sair\n");
+    printf("Opções:\n1 - Buscar cidade\n2 - Buscar os N vizinhos mais próximos\n3 - Sair\n");
     printf("Insira a opção desejada: ");
 }
 
@@ -18,9 +16,9 @@ void infoMuni(tmunicipio municipio) {
     printf("Longitude: %f\n", municipio.longitude);
 
     if(municipio.capital == 0) {
-        printf("Não é capital");
+        printf("Não é capital\n");
     } else {
-        printf("É capital");
+        printf("É capital\n");
     }
 
     printf("Código UF: %d\n", municipio.codigo_uf);
@@ -40,7 +38,8 @@ int main() {
 
     construirHash(&hash);
     construirArvore(&arvore);
-    learq = lerArquivo("./data/municipios2.json", &hash, &arvore);
+
+    learq = lerArquivo("./data/municipios.json", &hash, &arvore);
 
     if (learq == EXIT_SUCCESS) {
         do {
@@ -66,6 +65,7 @@ int main() {
                         }
                     }
                 } while (codigoIbge <= 0);
+                
                 break;
             case 2:                
                 do {
