@@ -36,16 +36,16 @@ int inicializaHeap(theap *heap, int no) {
 }
 
 void desce(tvizinho vetor[], int no, theap heap) {
-    int esquerdo = esquerdo(no);
-    int direito = direito(no);
+    int e = esquerdo(no);
+    int d = direito(no);
     int maior = no;
 
-    if(esquerdo < heap.qtdElementos && vetor[esquerdo].distancia > vetor[maior].distancia) {
-        maior = esquerdo;
+    if(e < heap.qtdElementos && vetor[e].distancia > vetor[maior].distancia) {
+        maior = e;
     }
     
-    if(direito < heap.qtdElementos && vetor[direito].distancia > vetor[maior].distancia) {
-        maior = direito;
+    if(d < heap.qtdElementos && vetor[d].distancia > vetor[maior].distancia) {
+        maior = d;
     }
 
     if(maior != no) {
@@ -55,20 +55,20 @@ void desce(tvizinho vetor[], int no, theap heap) {
 }
 
 void constroi_heap(tvizinho vetor[], theap heap) {
-    int pai = pai(heap.qtdElementos - 1);
+    int p = pai(heap.qtdElementos - 1);
 
-    while(pai >= 0) {
-        desce(vetor, pai, heap);
-        pai--;
+    while(p >= 0) {
+        desce(vetor, p, heap);
+        p--;
     }
 }
 
 void sobe(tvizinho vetor[], int no) {
-    int pai = pai(no);
+    int p = pai(no);
 
-    if(vetor[no].distancia > vetor[pai].distancia) {
-        troca(&vetor[pai], &vetor[no]);
-        sobe(vetor, pai);
+    if(vetor[no].distancia > vetor[p].distancia) {
+        troca(&vetor[p], &vetor[no]);
+        sobe(vetor, p);
     }
 }
 
